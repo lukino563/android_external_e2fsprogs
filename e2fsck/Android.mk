@@ -116,6 +116,16 @@ e2fsck_shared_libraries := \
 	libext2_quota \
 	libext2_com_err \
 	libext2_e2p
+
+e2fsck_static_libraries := \
+	libext2_blkid \
+	libext2_uuid_static \
+	libext2_profile \
+	libext2_quota \
+	libext2_com_err \
+	libext2_e2p \
+	libext2fs
+
 e2fsck_system_shared_libraries := libc
 
 e2fsck_c_includes := external/e2fsprogs/lib
@@ -157,9 +167,9 @@ include $(CLEAR_VARS)
 LOCAL_SRC_FILES := $(e2fsck_src_files)
 LOCAL_C_INCLUDES := $(e2fsck_c_includes)
 LOCAL_CFLAGS := $(e2fsck_cflags)
-LOCAL_SYSTEM_SHARED_LIBRARIES := $(e2fsck_system_shared_libraries)
-LOCAL_SHARED_LIBRARIES := $(e2fsck_shared_libraries)
+LOCAL_STATIC_LIBRARIES := $(e2fsck_system_shared_libraries) $(e2fsck_static_libraries)
 LOCAL_MODULE := e2fsck
+LOCAL_FORCE_STATIC_EXECUTABLE := true
 LOCAL_MODULE_TAGS := optional
 include $(BUILD_EXECUTABLE)
 

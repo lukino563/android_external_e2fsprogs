@@ -155,9 +155,9 @@ include $(CLEAR_VARS)
 LOCAL_SRC_FILES := $(tune2fs_src_files)
 LOCAL_C_INCLUDES := $(tune2fs_c_includes)
 LOCAL_CFLAGS := $(tune2fs_cflags)
-LOCAL_SHARED_LIBRARIES := $(tune2fs_shared_libraries)
-LOCAL_SYSTEM_SHARED_LIBRARIES := $(tune2fs_system_shared_libraries)
+LOCAL_STATIC_LIBRARIES := $(tune2fs_system_static_libraries) $(tune2fs_static_libraries)
 LOCAL_MODULE := tune2fs
+LOCAL_FORCE_STATIC_EXECUTABLE := true
 LOCAL_MODULE_TAGS := optional
 
 include $(BUILD_EXECUTABLE)
